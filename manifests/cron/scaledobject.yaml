@@ -1,0 +1,32 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: cron-scaledobject
+  namespace: default
+spec:
+  scaleTargetRef:
+    name: cron-worker
+  minReplicaCount: 1               # 비활성 시간대 최소 파드 수
+  maxReplicaCount: 10
+  triggers:
+    # 평일 오전 9시 ~ 오후 6시: 5개
+    - type: cron
+      metadata:
+        timezone: Asia/Seoul
+        start: "0 9 * * 1-5"
+        end: "0 18 * * 1-5"
+        desiredReplicas: "5"
+    # 평일 점심 12시 ~ 13시: 8개 (피크)
+    - type: cron
+      metadata:
+        timezone: Asia/Seoul
+        start: "0 12 * * 1-5"
+        end: "0 13 * * 1-5"
+        desiredReplicas: "8"
+    # 토요일 오전 10시 ~ 오후 3시: 2개
+    - type: cron
+      metadata:
+        timezone: Asia/Seoul
+        start: "0 10 * * 6"
+        end: "0 15 * * 6"
+        desiredReplicas: "2"

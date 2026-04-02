@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-worker
+  namespace: default
+spec:
+  replicas: 0                      # KEDA가 관리하므로 초기값 0
+  selector:
+    matchLabels:
+      app: redis-worker
+  template:
+    metadata:
+      labels:
+        app: redis-worker
+    spec:
+      containers:
+        - name: worker
+          image: redis:7-alpine
+          command:
+            - sh
+            - -c
+            # List에서 항목을 꺼내 처리하는 간단한 워커 예시
+            - |
+              while true; do
+                item=$(redis-cli -h $REDIS_HOST -a $REDIS_PASSWORD BRPOP my-task-queue 5)
+                if [ -n "$item" ]; then
+                  echo "Processing: $item"
+                fi
+              done
+          env:
+            - name: REDIS_HOST
+              value: "redis-service"
+            - name: REDIS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: redis-secret
+                  key: password
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 300m
+              memory: 256Mi

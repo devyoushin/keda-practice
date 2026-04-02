@@ -1,0 +1,10 @@
+apiVersion: keda.sh/v1alpha1
+kind: TriggerAuthentication
+metadata:
+  name: redis-trigger-auth
+  namespace: default
+spec:
+  secretTargetRef:
+    - parameter: password          # redis scaler가 요구하는 파라미터 이름
+      name: redis-secret           # Secret 이름
+      key: password                # Secret 내 key

@@ -1,0 +1,24 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: kafka-scaledobject
+  namespace: default
+spec:
+  scaleTargetRef:
+    name: kafka-consumer           # 스케일링 대상 Deployment 이름
+  minReplicaCount: 0               # 0 = Scale to Zero 활성화
+  maxReplicaCount: 10
+  pollingInterval: 15              # 15초마다 lag 확인
+  cooldownPeriod: 60               # lag 0 이후 60초 뒤 Scale to Zero
+  triggers:
+    - type: kafka
+      metadata:
+        bootstrapServers: kafka:9092
+        consumerGroup: my-consumer-group
+        topic: my-topic
+        lagThreshold: "10"         # 파드 1개당 lag 10개 처리
+        offsetResetPolicy: latest
+        sasl: PLAIN                # SASL 인증 사용 (인증 불필요 시 이 줄과 아래 authenticationRef 제거)
+        tls: disable
+      authenticationRef:
+        name: kafka-trigger-auth   # 인증 불필요 시 이 블록 전체 제거

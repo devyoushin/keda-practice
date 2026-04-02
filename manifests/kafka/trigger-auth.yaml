@@ -1,0 +1,13 @@
+apiVersion: keda.sh/v1alpha1
+kind: TriggerAuthentication
+metadata:
+  name: kafka-trigger-auth
+  namespace: default
+spec:
+  secretTargetRef:
+    - parameter: username          # kafka scaler가 요구하는 파라미터 이름
+      name: kafka-secret           # Secret 이름
+      key: username                # Secret 내 key
+    - parameter: password
+      name: kafka-secret
+      key: password
