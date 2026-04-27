@@ -51,6 +51,7 @@ keda-practice/
 | `kafka-scaler.md` | Kafka 컨슈머 랙 기반 스케일링 |
 | `redis-scaler.md` | Redis 리스트 길이 기반 스케일링 |
 | `cron-scaler.md` | Cron 스케줄 기반 스케일링 |
+| `cloudwatch-scaler.md` | AWS CloudWatch 메트릭 기반 스케일링 (EKS IRSA) |
 
 ---
 

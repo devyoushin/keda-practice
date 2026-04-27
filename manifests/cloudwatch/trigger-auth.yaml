@@ -1,0 +1,16 @@
+# IRSA 방식 — Secret 없이 Pod Identity로 CloudWatch 인증
+# 사전 조건: keda-operator ServiceAccount에 IRSA IAM Role 연결 필요
+#   eksctl create iamserviceaccount \
+#     --name keda-operator \
+#     --namespace keda \
+#     --cluster <cluster-name> \
+#     --attach-policy-arn arn:aws:iam::<account-id>:policy/KEDACloudWatchPolicy \
+#     --approve
+apiVersion: keda.sh/v1alpha1
+kind: TriggerAuthentication
+metadata:
+  name: cloudwatch-trigger-auth
+  namespace: default
+spec:
+  podIdentity:
+    provider: aws-eks    # IRSA(IAM Roles for Service Accounts) 사용

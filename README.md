@@ -16,7 +16,8 @@ EKS 환경에서 KEDA를 학습하기 위한 실습 저장소입니다.
    ├── kafka-scaler.md
    ├── cron-scaler.md
    ├── redis-scaler.md
-   └── prometheus-scaler.md
+   ├── prometheus-scaler.md
+   └── cloudwatch-scaler.md
 4. Hands-on      → hands-on.md
 ```
 
@@ -43,6 +44,7 @@ EKS 환경에서 KEDA를 학습하기 위한 실습 저장소입니다.
 | [cron-scaler.md](./cron-scaler.md) | Cron 스케줄 기반 스케일링 |
 | [redis-scaler.md](./redis-scaler.md) | Redis List 길이 기반 스케일링 |
 | [prometheus-scaler.md](./prometheus-scaler.md) | Prometheus 커스텀 메트릭 기반 스케일링 |
+| [cloudwatch-scaler.md](./cloudwatch-scaler.md) | AWS CloudWatch 메트릭 기반 스케일링 (EKS IRSA) |
 
 ### Hands-on
 | File | Description |
@@ -68,9 +70,13 @@ manifests/
 │   ├── scaledobject.yaml      # ScaledObject — List 길이 기반 스케일링
 │   ├── trigger-auth.yaml      # TriggerAuthentication — 비밀번호 인증
 │   └── secret.yaml            # Redis 인증 정보
-└── prometheus/
-    ├── deployment.yaml        # 대상 Deployment
-    └── scaledobject.yaml      # ScaledObject — PromQL 기반 스케일링
+├── prometheus/
+│   ├── deployment.yaml        # 대상 Deployment
+│   └── scaledobject.yaml      # ScaledObject — PromQL 기반 스케일링
+└── cloudwatch/
+    ├── deployment.yaml        # SQS Consumer Deployment (replicas: 0)
+    ├── trigger-auth.yaml      # TriggerAuthentication — IRSA (aws-eks provider)
+    └── scaledobject.yaml      # ScaledObject — SQS 큐 깊이 / Cron+CloudWatch 조합
 ```
 
 ---

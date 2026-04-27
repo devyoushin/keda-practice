@@ -1,0 +1,74 @@
+# SQS 큐 깊이 기반 스케일링 예시
+# 큐에 메시지가 없으면 Scale to Zero, 메시지 10개당 파드 1개 기동
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: sqs-consumer-scaledobject
+  namespace: default
+spec:
+  scaleTargetRef:
+    name: sqs-consumer
+  minReplicaCount: 0          # 큐가 비었을 때 Scale to Zero
+  maxReplicaCount: 20
+  pollingInterval: 30         # 30초마다 CloudWatch 메트릭 조회
+  cooldownPeriod: 60          # 스케일 인 전 대기 시간 (초)
+  fallback:
+    failureThreshold: 3       # CloudWatch 조회 3회 연속 실패 시
+    replicas: 2               # 안전을 위해 2개 파드 유지
+  triggers:
+    - type: aws-cloudwatch
+      metadata:
+        namespace: AWS/SQS
+        metricName: ApproximateNumberOfMessagesVisible
+        dimensionName: QueueName
+        dimensionValue: my-task-queue          # 실제 큐 이름으로 변경
+        targetMetricValue: "10"                # 파드 1개당 처리할 메시지 수
+        minMetricValue: "0"                    # 0 이하일 때 Scale to Zero 허용
+        metricStat: Maximum                    # 최대값 기준 (급격한 증가 감지에 적합)
+        metricStatPeriod: "60"                 # 60초 단위 집계
+        metricCollectionTime: "120"            # 최근 120초 데이터 수집
+        region: ap-northeast-2
+      authenticationRef:
+        name: cloudwatch-trigger-auth
+
+---
+# Cron + CloudWatch 조합 예시
+# 업무 시간 최소 3개 보장 + 큐 깊이에 따라 최대 30개까지 스케일
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: sqs-consumer-hybrid-scaledobject
+  namespace: default
+spec:
+  scaleTargetRef:
+    name: sqs-consumer
+  minReplicaCount: 0
+  maxReplicaCount: 30
+  pollingInterval: 30
+  cooldownPeriod: 60
+  fallback:
+    failureThreshold: 3
+    replicas: 3
+  triggers:
+    # 이벤트 기반: SQS 큐 깊이
+    - type: aws-cloudwatch
+      metadata:
+        namespace: AWS/SQS
+        metricName: ApproximateNumberOfMessagesVisible
+        dimensionName: QueueName
+        dimensionValue: my-task-queue
+        targetMetricValue: "10"
+        minMetricValue: "0"
+        metricStat: Maximum
+        metricStatPeriod: "60"
+        metricCollectionTime: "120"
+        region: ap-northeast-2
+      authenticationRef:
+        name: cloudwatch-trigger-auth
+    # 시간 기반: 평일 업무 시간 최소 파드 보장 (두 값 중 높은 쪽 적용)
+    - type: cron
+      metadata:
+        timezone: Asia/Seoul
+        start: "0 9 * * 1-5"      # 평일 오전 9시
+        end: "0 18 * * 1-5"       # 평일 오후 6시
+        desiredReplicas: "3"       # 업무 시간 최소 3개

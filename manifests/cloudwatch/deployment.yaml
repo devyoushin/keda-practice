@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sqs-consumer
+  namespace: default
+spec:
+  replicas: 0          # KEDA가 관리하므로 0으로 시작
+  selector:
+    matchLabels:
+      app: sqs-consumer
+  template:
+    metadata:
+      labels:
+        app: sqs-consumer
+    spec:
+      serviceAccountName: sqs-consumer-sa    # IRSA 적용 시 사용 (앱 자체 SQS 접근용)
+      containers:
+        - name: consumer
+          image: amazonlinux:2023
+          command:
+            - /bin/sh
+            - -c
+            - |
+              while true; do
+                aws sqs receive-message \
+                  --queue-url $SQS_QUEUE_URL \
+                  --region $AWS_REGION \
+                  --max-number-of-messages 10 \
+                  --wait-time-seconds 20 \
+                  --output json
+                sleep 1
+              done
+          env:
+            - name: SQS_QUEUE_URL
+              value: "https://sqs.ap-northeast-2.amazonaws.com/<account-id>/my-task-queue"
+            - name: AWS_REGION
+              value: "ap-northeast-2"
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "256Mi"
