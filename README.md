@@ -10,15 +10,15 @@ EKS 환경에서 KEDA를 학습하기 위한 실습 저장소입니다.
 ## Learning Path
 
 ```
-1. Installation  → install.md
-2. Core Concepts → scaledobject-guide.md, scaledjob-guide.md, triggerauth-guide.md
+1. Installation  → docs/install.md
+2. Core Concepts → docs/scaledobject-guide.md, docs/scaledjob-guide.md, docs/triggerauth-guide.md
 3. Scalers
-   ├── kafka-scaler.md
-   ├── cron-scaler.md
-   ├── redis-scaler.md
-   ├── prometheus-scaler.md
-   └── cloudwatch-scaler.md
-4. Hands-on      → hands-on.md
+   ├── docs/kafka-scaler.md
+   ├── docs/cron-scaler.md
+   ├── docs/redis-scaler.md
+   ├── docs/prometheus-scaler.md
+   └── docs/cloudwatch-scaler.md
+4. Hands-on      → docs/hands-on.md
 ```
 
 ---
@@ -28,34 +28,46 @@ EKS 환경에서 KEDA를 학습하기 위한 실습 저장소입니다.
 ### Installation
 | File | Description |
 |------|-------------|
-| [install.md](./install.md) | KEDA Helm 설치, 설치 확인, 업그레이드/제거 |
+| [docs/install.md](./docs/install.md) | KEDA Helm 설치, 설치 확인, 업그레이드/제거 |
 
 ### Core Concepts
 | File | Description |
 |------|-------------|
-| [scaledobject-guide.md](./scaledobject-guide.md) | ScaledObject — Deployment/StatefulSet 이벤트 기반 스케일링 |
-| [scaledjob-guide.md](./scaledjob-guide.md) | ScaledJob — Job 워크로드 이벤트 기반 실행 |
-| [triggerauth-guide.md](./triggerauth-guide.md) | TriggerAuthentication — 외부 시스템 인증 정보 관리 |
+| [docs/scaledobject-guide.md](./docs/scaledobject-guide.md) | ScaledObject — Deployment/StatefulSet 이벤트 기반 스케일링 |
+| [docs/scaledjob-guide.md](./docs/scaledjob-guide.md) | ScaledJob — Job 워크로드 이벤트 기반 실행 |
+| [docs/triggerauth-guide.md](./docs/triggerauth-guide.md) | TriggerAuthentication — 외부 시스템 인증 정보 관리 |
 
 ### Scalers
 | File | Description |
 |------|-------------|
-| [kafka-scaler.md](./kafka-scaler.md) | Kafka 토픽 consumer lag 기반 스케일링 |
-| [cron-scaler.md](./cron-scaler.md) | Cron 스케줄 기반 스케일링 |
-| [redis-scaler.md](./redis-scaler.md) | Redis List 길이 기반 스케일링 |
-| [prometheus-scaler.md](./prometheus-scaler.md) | Prometheus 커스텀 메트릭 기반 스케일링 |
-| [cloudwatch-scaler.md](./cloudwatch-scaler.md) | AWS CloudWatch 메트릭 기반 스케일링 (EKS IRSA) |
+| [docs/kafka-scaler.md](./docs/kafka-scaler.md) | Kafka 토픽 consumer lag 기반 스케일링 |
+| [docs/cron-scaler.md](./docs/cron-scaler.md) | Cron 스케줄 기반 스케일링 |
+| [docs/redis-scaler.md](./docs/redis-scaler.md) | Redis List 길이 기반 스케일링 |
+| [docs/prometheus-scaler.md](./docs/prometheus-scaler.md) | Prometheus 커스텀 메트릭 기반 스케일링 |
+| [docs/cloudwatch-scaler.md](./docs/cloudwatch-scaler.md) | AWS CloudWatch 메트릭 기반 스케일링 (EKS IRSA) |
 
 ### Hands-on
 | File | Description |
 |------|-------------|
-| [hands-on.md](./hands-on.md) | Kafka scaler 실습 — Scale to Zero 확인 |
+| [docs/hands-on.md](./docs/hands-on.md) | Kafka scaler 실습 — Scale to Zero 확인 |
 
 ---
 
 ## Manifest Structure
 
 ```
+docs/
+├── install.md
+├── scaledobject-guide.md
+├── scaledjob-guide.md
+├── triggerauth-guide.md
+├── kafka-scaler.md
+├── cron-scaler.md
+├── redis-scaler.md
+├── prometheus-scaler.md
+├── cloudwatch-scaler.md
+└── hands-on.md
+
 manifests/
 ├── kafka/
 │   ├── deployment.yaml        # Consumer Deployment (replicas: 0)

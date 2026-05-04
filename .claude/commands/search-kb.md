@@ -7,9 +7,9 @@ keda-practice 지식베이스에서 관련 내용을 검색합니다.
 다음 단계를 수행하세요:
 
 1. 관련 문서를 파악하세요:
-   - 스케일러: `prometheus-scaler.md`, `kafka-scaler.md`, `redis-scaler.md`, `cron-scaler.md`
-   - 오브젝트: `scaledobject-guide.md`, `scaledjob-guide.md`, `triggerauth-guide.md`
-   - 실습: `install.md`, `hands-on.md`
+   - 스케일러: `docs/prometheus-scaler.md`, `docs/kafka-scaler.md`, `docs/redis-scaler.md`, `docs/cron-scaler.md`, `docs/cloudwatch-scaler.md`
+   - 오브젝트: `docs/scaledobject-guide.md`, `docs/scaledjob-guide.md`, `docs/triggerauth-guide.md`
+   - 실습: `docs/install.md`, `docs/hands-on.md`
 
 2. 관련 문서를 읽어 답변을 구성하세요.
 

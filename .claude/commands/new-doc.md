@@ -11,7 +11,7 @@
    - 스케일러: prometheus, kafka, redis, cron, sqs, custom
    - 오브젝트: scaledobject, scaledjob, triggerauth
    - 운영: install, hands-on
-3. `<주제명>-guide.md` 또는 `<주제명>-scaler.md`를 생성하세요:
+3. `docs/<주제명>-guide.md` 또는 `docs/<주제명>-scaler.md`를 생성하세요:
    - CLAUDE.md 환경 설정 반영 (EKS, KEDA 버전)
    - ScaledObject/ScaledJob YAML 예시
    - TriggerAuthentication 설정 (해당 시)
