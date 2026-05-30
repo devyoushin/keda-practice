@@ -12,7 +12,7 @@ Kafka Consumer Group의 lag을 발생시켜 파드가 자동으로 스케일 아
 테스트용 Kafka를 클러스터 내에 배포합니다.
 
 ```bash
-kubectl apply -f manifests/kafka/kafka.yaml
+kubectl apply -f ops/manifests/kafka/kafka.yaml
 kubectl rollout status deployment/kafka -n default
 ```
 
@@ -34,11 +34,11 @@ kubectl exec -it deploy/kafka -- kafka-topics.sh \
 lag을 소비할 consumer 애플리케이션을 배포합니다.
 
 ```bash
-kubectl apply -f manifests/kafka/deployment.yaml
+kubectl apply -f ops/manifests/kafka/deployment.yaml
 ```
 
 ```yaml
-# manifests/kafka/deployment.yaml
+# ops/manifests/kafka/deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -72,11 +72,11 @@ spec:
 ## Step 3: ScaledObject 배포
 
 ```bash
-kubectl apply -f manifests/kafka/scaledobject.yaml
+kubectl apply -f ops/manifests/kafka/scaledobject.yaml
 ```
 
 ```yaml
-# manifests/kafka/scaledobject.yaml
+# ops/manifests/kafka/scaledobject.yaml
 apiVersion: keda.sh/v1alpha1
 kind: ScaledObject
 metadata:
@@ -187,7 +187,7 @@ keda-hpa-kafka-consumer   Deployment/kafka-consumer     0/5       1         10  
 ## 정리
 
 ```bash
-kubectl delete -f manifests/kafka/scaledobject.yaml
-kubectl delete -f manifests/kafka/deployment.yaml
-kubectl delete -f manifests/kafka/kafka.yaml
+kubectl delete -f ops/manifests/kafka/scaledobject.yaml
+kubectl delete -f ops/manifests/kafka/deployment.yaml
+kubectl delete -f ops/manifests/kafka/kafka.yaml
 ```

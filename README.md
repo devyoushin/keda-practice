@@ -68,7 +68,7 @@ docs/
 ├── cloudwatch-scaler.md
 └── hands-on.md
 
-manifests/
+ops/manifests/
 ├── kafka/
 │   ├── deployment.yaml        # Consumer Deployment (replicas: 0)
 │   ├── scaledobject.yaml      # ScaledObject — lag 기반 스케일링

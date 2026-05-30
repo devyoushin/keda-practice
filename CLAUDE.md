@@ -17,10 +17,10 @@ keda-practice/
 ├── .claude/
 │   ├── settings.json
 │   └── commands/              # /new-doc, /new-runbook, /review-doc, /add-troubleshooting, /search-kb
-├── agents/                    # doc-writer, scaler-designer, troubleshooter, performance-advisor
-├── templates/                 # service-doc, runbook, incident-report
-├── rules/                     # doc-writing, keda-conventions, security-checklist, monitoring
-├── manifests/                 # ScaledObject/ScaledJob YAML 예시
+├── docs/agents/                    # doc-writer, scaler-designer, troubleshooter, performance-advisor
+├── docs/templates/                 # service-doc, runbook, incident-report
+├── docs/rules/                     # doc-writing, keda-conventions, security-checklist, monitoring
+├── ops/manifests/                 # ScaledObject/ScaledJob YAML 예시
 └── docs/                      # 주제별 가이드 문서
 ```
 
