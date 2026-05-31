@@ -7,6 +7,23 @@ EKS 환경에서 KEDA를 학습하기 위한 실습 저장소입니다.
 
 ---
 
+## 어디서 시작할까
+
+- 문서 지도: `docs/README.md`
+- 첫 문서: `docs/install.md`
+- 운영 보조 자료: `ops/README.md`
+- AI 작업 지침: `CLAUDE.md`
+
+## 구조
+
+| 경로 | 내용 |
+|------|------|
+| `docs/` | 설치, ScaledObject, ScaledJob, TriggerAuthentication, scaler 문서 |
+| `ops/` | scaler별 Deployment, ScaledObject, TriggerAuthentication YAML |
+| `CLAUDE.md` | 이 레포에서 Claude가 참고할 작업 지침 |
+
+---
+
 ## Learning Path
 
 ```
@@ -53,7 +70,7 @@ EKS 환경에서 KEDA를 학습하기 위한 실습 저장소입니다.
 
 ---
 
-## Manifest Structure
+## 상세 구조
 
 ```
 docs/
