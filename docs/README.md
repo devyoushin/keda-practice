@@ -5,6 +5,7 @@ KEDA 학습 문서는 주제별 문서로 나눠 관리합니다.
 | 문서 | 내용 |
 |------|------|
 | `install.md` | KEDA Helm 설치 |
+| `install/upgrade/` | KEDA Helm 업그레이드 |
 | `scaledobject-guide.md` | ScaledObject 개념과 사용법 |
 | `scaledjob-guide.md` | ScaledJob 개념과 사용법 |
 | `triggerauth-guide.md` | TriggerAuthentication 인증 관리 |
@@ -17,3 +18,4 @@ KEDA 학습 문서는 주제별 문서로 나눠 관리합니다.
 | `agents/`, `rules/`, `templates/` | AI 작업 보조 자료 |
 
 처음 읽을 문서는 `install.md`입니다.
+업그레이드 절차는 `install/upgrade/`입니다.
