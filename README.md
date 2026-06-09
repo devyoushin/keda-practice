@@ -1,130 +1,77 @@
 # keda-practice
 
-EKS 환경에서 KEDA를 학습하기 위한 실습 저장소입니다.
+EKS 환경에서 KEDA를 사용해 이벤트 기반 오토스케일링을 학습하는 실습 저장소입니다. KEDA 설치, ScaledObject/ScaledJob, TriggerAuthentication, scaler별 예제, 운영 진단 문서를 함께 관리합니다.
 
-- **환경**: EKS / KEDA 2.16.1
-- **네임스페이스**: KEDA `keda`, 앱 `default`
+## 먼저 볼 문서
 
----
-
-## 어디서 시작할까
-
-- 문서 지도: `docs/README.md`
-- 첫 문서: `docs/install.md`
-- 운영 보조 자료: `ops/README.md`
-- AI 작업 지침: `CLAUDE.md`
-
-## 구조
-
-| 경로 | 내용 |
+| 목적 | 문서 |
 |------|------|
-| `docs/` | 설치, ScaledObject, ScaledJob, TriggerAuthentication, scaler 문서 |
-| `ops/` | scaler별 Deployment, ScaledObject, TriggerAuthentication YAML |
-| `CLAUDE.md` | 이 레포에서 Claude가 참고할 작업 지침 |
+| 전체 문서 목차 보기 | [docs/README.md](docs/README.md) |
+| KEDA 설치하기 | [docs/install.md](docs/install.md) |
+| 핵심 리소스 이해하기 | [docs/scaledobject-guide.md](docs/scaledobject-guide.md), [docs/scaledjob-guide.md](docs/scaledjob-guide.md), [docs/triggerauth-guide.md](docs/triggerauth-guide.md) |
+| Kafka scaler 실습하기 | [docs/hands-on.md](docs/hands-on.md) |
+| 운영 YAML 확인하기 | [ops/README.md](ops/README.md) |
+| AI 작업 지침 보기 | [CLAUDE.md](CLAUDE.md) |
 
----
+## 추천 학습 순서
 
-## Learning Path
+1. [KEDA 설치](docs/install.md)
+2. [ScaledObject](docs/scaledobject-guide.md)
+3. [TriggerAuthentication](docs/triggerauth-guide.md)
+4. [Kafka scaler](docs/kafka-scaler.md)
+5. [Hands-on 실습](docs/hands-on.md)
+6. [Redis](docs/redis-scaler.md), [Prometheus](docs/prometheus-scaler.md), [CloudWatch](docs/cloudwatch-scaler.md), [Cron](docs/cron-scaler.md) scaler
+7. [ScaledJob](docs/scaledjob-guide.md)
+8. [업그레이드](docs/install/upgrade/README.md)
 
-```
-1. Installation  → docs/install.md
-2. Core Concepts → docs/scaledobject-guide.md, docs/scaledjob-guide.md, docs/triggerauth-guide.md
-3. Scalers
-   ├── docs/kafka-scaler.md
-   ├── docs/cron-scaler.md
-   ├── docs/redis-scaler.md
-   ├── docs/prometheus-scaler.md
-   └── docs/cloudwatch-scaler.md
-4. Hands-on      → docs/hands-on.md
-```
+## 디렉터리 구조
 
----
-
-## Documents
-
-### Installation
-| File | Description |
-|------|-------------|
-| [docs/install.md](./docs/install.md) | KEDA Helm 설치, 설치 확인, 업그레이드/제거 |
-
-### Core Concepts
-| File | Description |
-|------|-------------|
-| [docs/scaledobject-guide.md](./docs/scaledobject-guide.md) | ScaledObject — Deployment/StatefulSet 이벤트 기반 스케일링 |
-| [docs/scaledjob-guide.md](./docs/scaledjob-guide.md) | ScaledJob — Job 워크로드 이벤트 기반 실행 |
-| [docs/triggerauth-guide.md](./docs/triggerauth-guide.md) | TriggerAuthentication — 외부 시스템 인증 정보 관리 |
-
-### Scalers
-| File | Description |
-|------|-------------|
-| [docs/kafka-scaler.md](./docs/kafka-scaler.md) | Kafka 토픽 consumer lag 기반 스케일링 |
-| [docs/cron-scaler.md](./docs/cron-scaler.md) | Cron 스케줄 기반 스케일링 |
-| [docs/redis-scaler.md](./docs/redis-scaler.md) | Redis List 길이 기반 스케일링 |
-| [docs/prometheus-scaler.md](./docs/prometheus-scaler.md) | Prometheus 커스텀 메트릭 기반 스케일링 |
-| [docs/cloudwatch-scaler.md](./docs/cloudwatch-scaler.md) | AWS CloudWatch 메트릭 기반 스케일링 (EKS IRSA) |
-
-### Hands-on
-| File | Description |
-|------|-------------|
-| [docs/hands-on.md](./docs/hands-on.md) | Kafka scaler 실습 — Scale to Zero 확인 |
-
----
-
-## 상세 구조
-
-```
-docs/
-├── install.md
-├── scaledobject-guide.md
-├── scaledjob-guide.md
-├── triggerauth-guide.md
-├── kafka-scaler.md
-├── cron-scaler.md
-├── redis-scaler.md
-├── prometheus-scaler.md
-├── cloudwatch-scaler.md
-└── hands-on.md
-
-ops/manifests/
-├── kafka/
-│   ├── deployment.yaml        # Consumer Deployment (replicas: 0)
-│   ├── scaledobject.yaml      # ScaledObject — lag 기반 스케일링
-│   ├── trigger-auth.yaml      # TriggerAuthentication — SASL 인증
-│   └── secret.yaml            # Kafka 인증 정보
-├── cron/
-│   ├── deployment.yaml        # 대상 Deployment
-│   └── scaledobject.yaml      # ScaledObject — 시간대별 다중 cron trigger
-├── redis/
-│   ├── deployment.yaml        # Worker Deployment (replicas: 0)
-│   ├── scaledobject.yaml      # ScaledObject — List 길이 기반 스케일링
-│   ├── trigger-auth.yaml      # TriggerAuthentication — 비밀번호 인증
-│   └── secret.yaml            # Redis 인증 정보
-├── prometheus/
-│   ├── deployment.yaml        # 대상 Deployment
-│   └── scaledobject.yaml      # ScaledObject — PromQL 기반 스케일링
-└── cloudwatch/
-    ├── deployment.yaml        # SQS Consumer Deployment (replicas: 0)
-    ├── trigger-auth.yaml      # TriggerAuthentication — IRSA (aws-eks provider)
-    └── scaledobject.yaml      # ScaledObject — SQS 큐 깊이 / Cron+CloudWatch 조합
+```text
+keda-practice/
+├── README.md
+├── CLAUDE.md          # AI 작업 지침
+├── docs/
+│   ├── README.md     # 문서 전체 목차
+│   ├── agents/       # AI 역할별 작업 지침
+│   ├── rules/        # 문서/운영 규칙
+│   ├── templates/    # 서비스 문서, 런북, 장애 보고서 템플릿
+│   └── *.md          # KEDA 주제별 가이드
+└── ops/
+    ├── README.md     # 운영 자산 설명
+    ├── install/      # Helm 설치 스크립트와 values
+    ├── upgrade/      # 업그레이드 스크립트
+    └── manifests/    # scaler별 Kubernetes 매니페스트
 ```
 
----
+## 문서 분류
 
-## Key Concept Summary
+| 분류 | 내용 |
+|------|------|
+| 설치 | KEDA Helm 설치, 업그레이드, 제거 |
+| 핵심 개념 | ScaledObject, ScaledJob, TriggerAuthentication |
+| Scaler | Kafka, Cron, Redis, Prometheus, CloudWatch |
+| 실습/운영 | Hands-on, 운영 매니페스트, 확인 명령어 |
+| 문서 운영 | 작성 규칙, 템플릿, AI 작업 지침 |
 
-**ScaledObject + Scaler** 가 KEDA의 핵심입니다.
+## 환경
 
+| 항목 | 값 |
+|------|-----|
+| Platform | EKS |
+| KEDA | 2.16.1 |
+| Kubernetes | v1.27 이상 |
+| KEDA Namespace | `keda` |
+| App Namespace | `default` |
+
+## 핵심 개념
+
+KEDA는 외부 이벤트 소스의 메트릭을 읽고 Kubernetes HPA를 관리해 워크로드를 자동으로 조정합니다.
+
+```text
+External Event Source
+  -> KEDA Operator
+  -> External Metrics API / HPA
+  -> Deployment, StatefulSet, Job
 ```
-External Event Source (Kafka, Redis, SQS ...)
- │
- ▼
-[KEDA Operator] → 이벤트 메트릭 수집
- │
- ▼
-[HPA] → 자동 생성 및 관리
- │
- ▼
-Deployment (minReplicas: 0 ↔ maxReplicas: N)
-```
 
-> Scale to Zero: 이벤트가 없으면 파드를 0으로 줄이고, 이벤트 발생 시 다시 기동합니다.
+Scale to Zero를 사용하면 이벤트가 없을 때 파드를 `0`개까지 줄이고, 이벤트가 다시 생기면 워크로드를 기동할 수 있습니다.
