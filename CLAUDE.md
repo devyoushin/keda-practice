@@ -17,11 +17,15 @@ keda-practice/
 ├── .claude/
 │   ├── settings.json
 │   └── commands/              # /new-doc, /new-runbook, /review-doc, /add-troubleshooting, /search-kb
-├── docs/agents/                    # doc-writer, scaler-designer, troubleshooter, performance-advisor
-├── docs/templates/                 # service-doc, runbook, incident-report
-├── docs/rules/                     # doc-writing, keda-conventions, security-checklist, monitoring
-├── ops/manifests/                 # ScaledObject/ScaledJob YAML 예시
-└── docs/                      # 주제별 가이드 문서
+├── docs/
+│   ├── install/               # 설치와 업그레이드
+│   ├── concepts/              # ScaledObject, ScaledJob, TriggerAuthentication
+│   ├── scalers/               # Kafka, Cron, Redis, Prometheus, CloudWatch scaler
+│   ├── tutorials/             # hands-on 실습
+│   ├── agents/                # doc-writer, scaler-designer, troubleshooter, performance-advisor
+│   ├── templates/             # service-doc, runbook, incident-report
+│   └── rules/                 # doc-writing, keda-conventions, security-checklist, monitoring
+└── ops/manifests/             # ScaledObject/ScaledJob YAML 예시
 ```
 
 ---
@@ -42,16 +46,16 @@ keda-practice/
 
 | 문서 | 주제 |
 |------|------|
-| `docs/install.md` | KEDA 설치 (Helm) |
-| `docs/hands-on.md` | 기본 실습 |
-| `docs/scaledobject-guide.md` | ScaledObject 개념 및 설정 |
-| `docs/scaledjob-guide.md` | ScaledJob 개념 및 설정 |
-| `docs/triggerauth-guide.md` | TriggerAuthentication 보안 설정 |
-| `docs/prometheus-scaler.md` | Prometheus 메트릭 기반 스케일링 |
-| `docs/kafka-scaler.md` | Kafka 컨슈머 랙 기반 스케일링 |
-| `docs/redis-scaler.md` | Redis 리스트 길이 기반 스케일링 |
-| `docs/cron-scaler.md` | Cron 스케줄 기반 스케일링 |
-| `docs/cloudwatch-scaler.md` | AWS CloudWatch 메트릭 기반 스케일링 (EKS IRSA) |
+| `docs/install/install.md` | KEDA 설치 (Helm) |
+| `docs/tutorials/hands-on.md` | 기본 실습 |
+| `docs/concepts/scaledobject-guide.md` | ScaledObject 개념 및 설정 |
+| `docs/concepts/scaledjob-guide.md` | ScaledJob 개념 및 설정 |
+| `docs/concepts/triggerauth-guide.md` | TriggerAuthentication 보안 설정 |
+| `docs/scalers/prometheus-scaler.md` | Prometheus 메트릭 기반 스케일링 |
+| `docs/scalers/kafka-scaler.md` | Kafka 컨슈머 랙 기반 스케일링 |
+| `docs/scalers/redis-scaler.md` | Redis 리스트 길이 기반 스케일링 |
+| `docs/scalers/cron-scaler.md` | Cron 스케줄 기반 스케일링 |
+| `docs/scalers/cloudwatch-scaler.md` | AWS CloudWatch 메트릭 기반 스케일링 (EKS IRSA) |
 
 ---
 

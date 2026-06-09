@@ -18,12 +18,12 @@ KEDA를 실제로 설치하거나 실습할 때 사용하는 스크립트와 Kub
 
 | 작업 | 문서 |
 |------|------|
-| KEDA 설치 | [../docs/install.md](../docs/install.md) |
+| KEDA 설치 | [../docs/install/install.md](../docs/install/install.md) |
 | KEDA 업그레이드 | [../docs/install/upgrade/README.md](../docs/install/upgrade/README.md) |
-| ScaledObject 이해 | [../docs/scaledobject-guide.md](../docs/scaledobject-guide.md) |
-| TriggerAuthentication 이해 | [../docs/triggerauth-guide.md](../docs/triggerauth-guide.md) |
-| Kafka scaler 실습 | [../docs/hands-on.md](../docs/hands-on.md) |
-| scaler별 설정 | [../docs/kafka-scaler.md](../docs/kafka-scaler.md), [../docs/cron-scaler.md](../docs/cron-scaler.md), [../docs/redis-scaler.md](../docs/redis-scaler.md), [../docs/prometheus-scaler.md](../docs/prometheus-scaler.md), [../docs/cloudwatch-scaler.md](../docs/cloudwatch-scaler.md) |
+| ScaledObject 이해 | [../docs/concepts/scaledobject-guide.md](../docs/concepts/scaledobject-guide.md) |
+| TriggerAuthentication 이해 | [../docs/concepts/triggerauth-guide.md](../docs/concepts/triggerauth-guide.md) |
+| Kafka scaler 실습 | [../docs/tutorials/hands-on.md](../docs/tutorials/hands-on.md) |
+| scaler별 설정 | [../docs/scalers/kafka-scaler.md](../docs/scalers/kafka-scaler.md), [../docs/scalers/cron-scaler.md](../docs/scalers/cron-scaler.md), [../docs/scalers/redis-scaler.md](../docs/scalers/redis-scaler.md), [../docs/scalers/prometheus-scaler.md](../docs/scalers/prometheus-scaler.md), [../docs/scalers/cloudwatch-scaler.md](../docs/scalers/cloudwatch-scaler.md) |
 
 ## 적용 순서
 

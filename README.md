@@ -7,21 +7,21 @@ EKS 환경에서 KEDA를 사용해 이벤트 기반 오토스케일링을 학습
 | 목적 | 문서 |
 |------|------|
 | 전체 문서 목차 보기 | [docs/README.md](docs/README.md) |
-| KEDA 설치하기 | [docs/install.md](docs/install.md) |
-| 핵심 리소스 이해하기 | [docs/scaledobject-guide.md](docs/scaledobject-guide.md), [docs/scaledjob-guide.md](docs/scaledjob-guide.md), [docs/triggerauth-guide.md](docs/triggerauth-guide.md) |
-| Kafka scaler 실습하기 | [docs/hands-on.md](docs/hands-on.md) |
+| KEDA 설치하기 | [docs/install/install.md](docs/install/install.md) |
+| 핵심 리소스 이해하기 | [docs/concepts/scaledobject-guide.md](docs/concepts/scaledobject-guide.md), [docs/concepts/scaledjob-guide.md](docs/concepts/scaledjob-guide.md), [docs/concepts/triggerauth-guide.md](docs/concepts/triggerauth-guide.md) |
+| Kafka scaler 실습하기 | [docs/tutorials/hands-on.md](docs/tutorials/hands-on.md) |
 | 운영 YAML 확인하기 | [ops/README.md](ops/README.md) |
 | AI 작업 지침 보기 | [CLAUDE.md](CLAUDE.md) |
 
 ## 추천 학습 순서
 
-1. [KEDA 설치](docs/install.md)
-2. [ScaledObject](docs/scaledobject-guide.md)
-3. [TriggerAuthentication](docs/triggerauth-guide.md)
-4. [Kafka scaler](docs/kafka-scaler.md)
-5. [Hands-on 실습](docs/hands-on.md)
-6. [Redis](docs/redis-scaler.md), [Prometheus](docs/prometheus-scaler.md), [CloudWatch](docs/cloudwatch-scaler.md), [Cron](docs/cron-scaler.md) scaler
-7. [ScaledJob](docs/scaledjob-guide.md)
+1. [KEDA 설치](docs/install/install.md)
+2. [ScaledObject](docs/concepts/scaledobject-guide.md)
+3. [TriggerAuthentication](docs/concepts/triggerauth-guide.md)
+4. [Kafka scaler](docs/scalers/kafka-scaler.md)
+5. [Hands-on 실습](docs/tutorials/hands-on.md)
+6. [Redis](docs/scalers/redis-scaler.md), [Prometheus](docs/scalers/prometheus-scaler.md), [CloudWatch](docs/scalers/cloudwatch-scaler.md), [Cron](docs/scalers/cron-scaler.md) scaler
+7. [ScaledJob](docs/concepts/scaledjob-guide.md)
 8. [업그레이드](docs/install/upgrade/README.md)
 
 ## 디렉터리 구조
@@ -32,10 +32,13 @@ keda-practice/
 ├── CLAUDE.md          # AI 작업 지침
 ├── docs/
 │   ├── README.md     # 문서 전체 목차
+│   ├── install/      # 설치와 업그레이드
+│   ├── concepts/     # ScaledObject, ScaledJob, TriggerAuthentication
+│   ├── scalers/      # Kafka, Cron, Redis, Prometheus, CloudWatch scaler
+│   ├── tutorials/    # hands-on 실습
 │   ├── agents/       # AI 역할별 작업 지침
 │   ├── rules/        # 문서/운영 규칙
-│   ├── templates/    # 서비스 문서, 런북, 장애 보고서 템플릿
-│   └── *.md          # KEDA 주제별 가이드
+│   └── templates/    # 서비스 문서, 런북, 장애 보고서 템플릿
 └── ops/
     ├── README.md     # 운영 자산 설명
     ├── install/      # Helm 설치 스크립트와 values

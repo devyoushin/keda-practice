@@ -97,4 +97,4 @@ kubectl delete crd \
 
 - [KEDA Helm Chart](https://github.com/kedacore/charts)
 - [KEDA 공식 설치 문서](https://keda.sh/docs/latest/deploy/)
-- [KEDA 업그레이드](./install/upgrade/)
+- [KEDA 업그레이드](upgrade/README.md)
