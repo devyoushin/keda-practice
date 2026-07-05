@@ -2,7 +2,7 @@
 
 Kafka Consumer Group의 lag을 발생시켜 파드가 자동으로 스케일 아웃/인 되는 것을 직접 확인합니다.
 
-- **전제 조건**: KEDA 설치 완료 ([install.md](../install/install.md) 참고)
+- **전제 조건**: KEDA 설치 완료 ([install.md](../01-installation/install.md) 참고)
 - **네임스페이스**: default
 
 ---

@@ -10,9 +10,9 @@ KEDA 동작을 실제로 배포해서 확인하는 hands-on 문서를 모은 폴
 
 ## 사전 학습
 
-1. [../install/install.md](../install/install.md)
-2. [../concepts/scaledobject-guide.md](../concepts/scaledobject-guide.md)
-3. [../scalers/kafka-scaler.md](../scalers/kafka-scaler.md)
+1. [../01-installation/install.md](../01-installation/install.md)
+2. [../02-concepts/scaledobject-guide.md](../02-concepts/scaledobject-guide.md)
+3. [../03-scalers/kafka-scaler.md](../03-scalers/kafka-scaler.md)
 
 ## 관련 경로
 

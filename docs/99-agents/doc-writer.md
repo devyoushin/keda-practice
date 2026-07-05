@@ -21,5 +21,5 @@ description: KEDA 가이드 문서 작성 전문가. ScaledObject, ScaledJob, �
 
 ## 참조
 - `CLAUDE.md` — EKS 환경, KEDA 버전
-- `rules/keda-conventions.md` — 코드 표준
-- `templates/service-doc.md` — 문서 템플릿
+- `90-standards/keda-conventions.md` — 코드 표준
+- `91-templates/service-doc.md` — 문서 템플릿

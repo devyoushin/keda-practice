@@ -18,5 +18,5 @@ KEDA를 사용할 때 먼저 이해해야 하는 Kubernetes 리소스와 인증 
 
 ## 관련 문서
 
-- [../scalers/README.md](../scalers/README.md)
-- [../tutorials/hands-on.md](../tutorials/hands-on.md)
+- [../03-scalers/README.md](../03-scalers/README.md)
+- [../04-tutorials/hands-on.md](../04-tutorials/hands-on.md)

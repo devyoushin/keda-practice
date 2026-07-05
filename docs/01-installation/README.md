@@ -13,4 +13,4 @@ KEDA 설치, 업그레이드, 롤백 절차를 모은 폴더입니다.
 
 - [../../ops/install/](../../ops/install/)에는 설치 스크립트와 Helm values가 있습니다.
 - [../../ops/upgrade/](../../ops/upgrade/)에는 업그레이드 스크립트가 있습니다.
-- 설치 후 scaler 실습은 [../tutorials/hands-on.md](../tutorials/hands-on.md)에서 이어갑니다.
+- 설치 후 scaler 실습은 [../04-tutorials/hands-on.md](../04-tutorials/hands-on.md)에서 이어갑니다.

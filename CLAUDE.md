@@ -46,16 +46,16 @@ keda-practice/
 
 | 문서 | 주제 |
 |------|------|
-| `docs/install/install.md` | KEDA 설치 (Helm) |
-| `docs/tutorials/hands-on.md` | 기본 실습 |
-| `docs/concepts/scaledobject-guide.md` | ScaledObject 개념 및 설정 |
-| `docs/concepts/scaledjob-guide.md` | ScaledJob 개념 및 설정 |
-| `docs/concepts/triggerauth-guide.md` | TriggerAuthentication 보안 설정 |
-| `docs/scalers/prometheus-scaler.md` | Prometheus 메트릭 기반 스케일링 |
-| `docs/scalers/kafka-scaler.md` | Kafka 컨슈머 랙 기반 스케일링 |
-| `docs/scalers/redis-scaler.md` | Redis 리스트 길이 기반 스케일링 |
-| `docs/scalers/cron-scaler.md` | Cron 스케줄 기반 스케일링 |
-| `docs/scalers/cloudwatch-scaler.md` | AWS CloudWatch 메트릭 기반 스케일링 (EKS IRSA) |
+| `docs/01-installation/install.md` | KEDA 설치 (Helm) |
+| `docs/04-tutorials/hands-on.md` | 기본 실습 |
+| `docs/02-concepts/scaledobject-guide.md` | ScaledObject 개념 및 설정 |
+| `docs/02-concepts/scaledjob-guide.md` | ScaledJob 개념 및 설정 |
+| `docs/02-concepts/triggerauth-guide.md` | TriggerAuthentication 보안 설정 |
+| `docs/03-scalers/prometheus-scaler.md` | Prometheus 메트릭 기반 스케일링 |
+| `docs/03-scalers/kafka-scaler.md` | Kafka 컨슈머 랙 기반 스케일링 |
+| `docs/03-scalers/redis-scaler.md` | Redis 리스트 길이 기반 스케일링 |
+| `docs/03-scalers/cron-scaler.md` | Cron 스케줄 기반 스케일링 |
+| `docs/03-scalers/cloudwatch-scaler.md` | AWS CloudWatch 메트릭 기반 스케일링 (EKS IRSA) |
 
 ---
 

@@ -24,6 +24,6 @@ KEDA가 외부 이벤트 소스를 읽어 HPA 메트릭으로 변환하는 scale
 
 ## 관련 문서
 
-- [../concepts/scaledobject-guide.md](../concepts/scaledobject-guide.md)
-- [../concepts/triggerauth-guide.md](../concepts/triggerauth-guide.md)
-- [../tutorials/hands-on.md](../tutorials/hands-on.md)
+- [../02-concepts/scaledobject-guide.md](../02-concepts/scaledobject-guide.md)
+- [../02-concepts/triggerauth-guide.md](../02-concepts/triggerauth-guide.md)
+- [../04-tutorials/hands-on.md](../04-tutorials/hands-on.md)
